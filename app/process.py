@@ -1,3 +1,7 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+# encoding: utf-8
+
 # 多进程不共享全局变量
 import multiprocessing
 import time
@@ -28,6 +32,3 @@ def main():
     po.join()
 
     print("(%s) end" % os.getpid())
-
-if __name__ == "__main__":
-    main()
