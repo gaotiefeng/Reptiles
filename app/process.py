@@ -1,11 +1,10 @@
-import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 # encoding: utf-8
-
 # 多进程不共享全局变量
 import multiprocessing
 import time
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 def write(q):
         print("write启动(%s)，父进程为(%s)" % (os.getpid(), os.getppid()))
@@ -19,7 +18,7 @@ def read(q):
                 print("read从Queue获取到消息：%s" % q.get(True))
 
 
-def main():
+def start():
     print("(%s) start" % os.getpid())
     q = multiprocessing.Manager().Queue()
     po = multiprocessing.Pool()
