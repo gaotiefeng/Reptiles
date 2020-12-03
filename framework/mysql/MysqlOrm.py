@@ -29,17 +29,30 @@ class MysqlOrm:
         db.close()
 
     # 查询一条数据
-    def first(self, table, where):
+    """ @params where 字典类型
+        @params table 表名
+        @params filed 字段名称
+    """
+    def first(self, table, filed, where):
+
+        where = self.where_and(where)
         # SQL 查询语句
-        sql = 'SELECT * FROM ' + table + ' WHERE ' + where
+        if not where:
+            sql = 'SELECT ' + filed + ' FROM ' + table + ' limit 1'
+        else:
+            sql = 'SELECT ' + filed + ' FROM ' + table + ' WHERE ' + where + ' limit 1'
 
         self.type = 'first'
         return self.query_one(sql)
 
     # 查询所有条数据
     def all(self, table, where):
+        where = self.where_and(where)
         # SQL 查询语句
-        sql = 'SELECT * FROM ' + table + ' WHERE ' + where
+        if not where:
+            sql = 'SELECT * FROM ' + table
+        else:
+            sql = 'SELECT * FROM ' + table + ' WHERE ' + where
 
         self.type = 'all'
         return self.query_all(sql)

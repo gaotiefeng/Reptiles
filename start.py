@@ -3,7 +3,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from test import testMysql
 
 def start():
-    print(1)
+    testMysql.testMysql().first()
 
 if __name__ == '__main__':
     start()

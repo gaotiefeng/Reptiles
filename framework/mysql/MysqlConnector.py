@@ -1,15 +1,20 @@
 #!/usr/bin/python3
-
+# encoding: utf-8
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from config import mysql
 import mysql.connector
 
 class MysqlConnector:
-    host = "192.168.1.128"
-    port = 3306
-    user = "baijiao_collect_1"
-    password = "baijiao_collect_1"
-    db = "baijiao_collect_1"
 
     def __init__(self):
+        config = mysql.config()
+        self.host = config['host']
+        self.port = config['port']
+        self.username = config['username']
+        self.password = config['password']
+        self.db = config['db']
+
         print("mysqlConnector host =%s - db = %s", self.host, self.db)
 
     @staticmethod

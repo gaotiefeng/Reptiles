@@ -10,8 +10,9 @@ class testMysql:
 
     # first
     def first(self):
-        where = 'id = 1'
-        result = sql.MysqlOrm().first(self.table, where)
+        where = {'id': 2}
+        filed = '*'
+        result = sql.MysqlOrm().first(self.table, filed, where)
         print(result)
 
     # 插入一条数据
@@ -31,7 +32,7 @@ class testMysql:
 
     # 插入一条数据
     def all(self):
-        where = '1=1'
+        where = {}
         result = sql.MysqlOrm().all(self.table, where)
         print(result)
 
