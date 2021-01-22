@@ -20,8 +20,7 @@ class MysqlOrm:
 
     @staticmethod
     def connect(self):
-        db = pymysql.connect(self.host, self.username, self.password, self.db)
-
+        db = pymysql.connect(host=self.host, user=self.username, password=self.password, database=self.db)
         return db
 
     @staticmethod

@@ -22,7 +22,7 @@ class testMysql:
         result = sql.MysqlOrm().insert(self.table, data)
         print(result)
 
-    # 插入一条数据
+    # 更新一条数据
     def update(self):
         localtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         data = {'name': '12332', 'password': '223223', 'created_at': localtime}
@@ -30,7 +30,7 @@ class testMysql:
         result = sql.MysqlOrm().update(self.table, where, data)
         print(result)
 
-    # 插入一条数据
+    # 查询所有
     def all(self):
         where = {}
         result = sql.MysqlOrm().all(self.table, where)
